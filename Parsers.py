@@ -1,6 +1,5 @@
 
 #Парсим статитстику преступлений
-'''
 import csv
 cnt = 0
 d = {}
@@ -14,10 +13,10 @@ with open('Crimes.csv', newline='') as File:
             d[row[5]] = d.setdefault(row[5],0)+1
         #if cnt > 3:
             #break
-print(sorted(d.items(), reverse = True, key = lambda x: x[1]),sep = '\n')'''
+print(sorted(d.items(), reverse = True, key = lambda x: x[1]),sep = '\n')
 
 #Парсер чисел с numbersapi.com
-'''
+
 import requests as req
 
 with open("dataset_24476_3.txt", "r") as f:
@@ -29,10 +28,10 @@ with open("dataset_24476_3.txt", "r") as f:
         if res.json()['found']:
             print("Interesting")
         else:
-            print("Boring")'''
+            print("Boring")
 
 #Парсим артистов с api.artsy.net
-'''
+
 import requests
 import json
 
@@ -63,7 +62,7 @@ with open("dataset_24476_4.txt", "r") as f:
         dic[j['sortable_name']] = j['birthday']
 
 for x in sorted(dic.items(),key = lambda x: x[1]):
-    print(x[0])'''
+    print(x[0])
 
 
 
