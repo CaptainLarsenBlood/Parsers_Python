@@ -29,6 +29,10 @@ elif res.status_cod/100 == 5:
 
 data = res.json()
 
+#Выгрузка json в файл
+#with open('data.txt', 'w') as outfile:
+#   json.dump(data, outfile, indent=1)
+
 print("Погода: %s" % data["weather"][0]['description'])
 print("Температура: %s *C" % data["main"]["temp"])
 print("Ощущается как: %s *C" % data["main"]["feels_like"])
