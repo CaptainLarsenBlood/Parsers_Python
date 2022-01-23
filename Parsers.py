@@ -1,3 +1,43 @@
+#Парсим погоду с openweathermap.org.
+#Нас интересуют такие параметры в json:
+# 1) weather.description
+# 2) main.temp, main.feels_like, main.pressure, main.humidity
+# 3) wind.speed
+# 4) clouds.all
+#Регаемся и получаем api-ключ
+
+import requests as req
+import json
+
+town = "Ekaterinburg"
+api = "42b582831e095766d825429ec639a096"
+
+res = req.get("http://api.openweathermap.org/data/2.5/weather?q=%s&units=metric&appid=%s" % (town, api))
+
+#Разбираем код состояния ответа
+if res.status_code == 200:
+    print("Success!")
+elif res.status_code == 404:
+    print("Not found")
+elif res.status_cod/100 == 4:
+    print("4xx: Client Error")
+elif res.status_cod/100 == 5:
+    print ("5xx: Server Error")
+
+
+#print(res.headers["Content-Type"]) #Проверяем формат полученных данных
+
+data = res.json()
+
+print("Погода: %s" % data["weather"][0]['description'])
+print("Температура: %s *C" % data["main"]["temp"])
+print("Ощущается как: %s *C" % data["main"]["feels_like"])
+print("Давление: %s hPa" % data["main"]["pressure"])
+print("Влажность: %s %%" % data["main"]["humidity"])
+print("Скорость ветра: %s м/с" % data["wind"]["speed"])
+print("Облачность: %s %%" % data["clouds"]["all"])
+
+
 
 #Парсим статитстику преступлений
 import csv
