@@ -1,3 +1,6 @@
+Парсим вакансии с hh. Информация по API тут https://github.com/hhru/api
+
+
 import requests
 
 # Пакет для удобной работы с данными в формате json
